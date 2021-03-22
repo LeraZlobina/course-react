@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "./Input";
 
-export const Signup = ({ navigate }) => {
+export const SignUp = ({ navigate }) => {
     
     return (
         <form>
