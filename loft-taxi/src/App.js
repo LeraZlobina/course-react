@@ -1,30 +1,43 @@
 import React from "react";
-import { Login } from "./components/Login";
+import { LoginWithAuth } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 import { Map } from "./components/Map";
 import { Profile } from "./components/Profile";
-import { Header } from "./components/Header";
+import { HeaderWithAuth } from "./components/Header";
+import { withAuth } from "./components/AuthContext";
+import PropTypes from "prop-types";
+import "./stylesheets/main.css";
+
 
 class App extends React.Component {
 
   state = { currentPage: "login" };
 
   navigateTo = (page) => {
-    this.setState({ currentPage: page })
+    if (this.props.isLoggedIn) {
+      this.setState({ currentPage: page })
+    } else {
+      this.setState({ currentPage: "login" })
+    }
+    
   };
 
   render() {  
-    return <>
-      {(this.state.currentPage!=="login" && this.state.currentPage!=="signUp" ) && <Header navigate={this.navigateTo} />}
-      <div>
-        {this.state.currentPage === "login" && <Login navigate={this.navigateTo} />}
+    return (
+      <div className="wrapper">
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="signUp" ) && <HeaderWithAuth navigate={this.navigateTo} />}
+        {this.state.currentPage === "login" && <LoginWithAuth navigate={this.navigateTo} />}
         {this.state.currentPage === "signUp" && <SignUp navigate={this.navigateTo} />}
-        {this.state.currentPage === "map" && <Map />}
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="signUp") && <Map />}
         {this.state.currentPage === "profile" && <Profile />}
       </div>
-    </>;
+    )
   };
   
 }
 
-export default App;
+App.propTypes = {
+  isLoggedIn: PropTypes.bool
+}
+
+export default withAuth(App);
