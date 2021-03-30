@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const Input = ({name, type, label, placeholder}) => {
     
     return (
-        <div className="input-wrapper">
+        <div data-testid="input" className="input-wrapper">
             <label className="label" htmlFor={name}>{label}</label>
             <input className="input" id={name} type={type} placeholder={placeholder} />
         </div>  

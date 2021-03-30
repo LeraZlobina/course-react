@@ -1,6 +1,6 @@
 import React from "react";
 import { LoginWithAuth } from "./components/Login";
-import { SignUp } from "./components/SignUp";
+import { Register} from "./components/Register";
 import { Map } from "./components/Map";
 import { Profile } from "./components/Profile";
 import { HeaderWithAuth } from "./components/Header";
@@ -14,7 +14,7 @@ class App extends React.Component {
   state = { currentPage: "login" };
 
   navigateTo = (page) => {
-    if (this.props.isLoggedIn) {
+    if (this.props.isLoggedIn || page ==="register") {
       this.setState({ currentPage: page })
     } else {
       this.setState({ currentPage: "login" })
@@ -25,10 +25,10 @@ class App extends React.Component {
   render() {  
     return (
       <div className="wrapper">
-        {(this.state.currentPage!=="login" && this.state.currentPage!=="signUp" ) && <HeaderWithAuth navigate={this.navigateTo} />}
-        {this.state.currentPage === "login" && <LoginWithAuth navigate={this.navigateTo} />}
-        {this.state.currentPage === "signUp" && <SignUp navigate={this.navigateTo} />}
-        {(this.state.currentPage!=="login" && this.state.currentPage!=="signUp") && <Map />}
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="register" ) && <HeaderWithAuth navigate={this.navigateTo} />}
+        {this.state.currentPage === "login" && <LoginWithAuth navigate={this.navigateTo}/>}
+        {this.state.currentPage === "register" && <Register navigate={this.navigateTo} />}
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="register") && <Map />}
         {this.state.currentPage === "profile" && <Profile />}
       </div>
     )

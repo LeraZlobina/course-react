@@ -10,7 +10,7 @@ export const Profile = () => {
         <section className="profile-section">
             <div className="profile-section__wrapper">
                 <div className="profile-wrapper"></div>
-                <div className="profile">
+                <div data-testid="profile" className="profile">
                     <h1 className="profile__title">Профиль</h1>
                     <p className="profile__subtitle">Введите платежные данные</p>
                     <div className="profile__data">

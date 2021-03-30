@@ -26,6 +26,5 @@ export class Map extends Component {
                 <div data-testid="map" className="map" ref={this.mapContainer}></div>
             </div>
         )
-            
     }
 }
