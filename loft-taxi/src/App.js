@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { LoginWithAuth } from "./components/Login";
+import { Register} from "./components/Register";
+import { Map } from "./components/Map";
+import { Profile } from "./components/Profile";
+import { HeaderWithAuth } from "./components/Header";
+import { withAuth } from "./components/AuthContext";
+import PropTypes from "prop-types";
+import "./stylesheets/main.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+  state = { currentPage: "login" };
+
+  navigateTo = (page) => {
+    if (this.props.isLoggedIn || page ==="register") {
+      this.setState({ currentPage: page })
+    } else {
+      this.setState({ currentPage: "login" })
+    }
+    
+  };
+
+  render() {  
+    return (
+      <div className="wrapper">
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="register" ) && <HeaderWithAuth navigate={this.navigateTo} />}
+        {this.state.currentPage === "login" && <LoginWithAuth navigate={this.navigateTo}/>}
+        {this.state.currentPage === "register" && <Register navigate={this.navigateTo} />}
+        {(this.state.currentPage!=="login" && this.state.currentPage!=="register") && <Map />}
+        {this.state.currentPage === "profile" && <Profile />}
+      </div>
+    )
+  };
+  
 }
 
-export default App;
+App.propTypes = {
+  isLoggedIn: PropTypes.bool
+}
+
+export default withAuth(App);
