@@ -2,21 +2,18 @@ import React, {Component} from "react";
 import { Input } from "./Input";
 import logo from "../assets/logo.png";
 import PropTypes from "prop-types";
-import { withAuth } from "./AuthContext";
+import {connect} from "react-redux";
+import {authenticate} from "../modules/auth/actions";
+import { Link } from "react-router-dom";
+
 
 export class Login extends Component {
     
     authenticate = (event) => {
         event.preventDefault();
         const { email, password } = event.target;
-        this.props.logIn(email.value, password.value);
-        this.props.navigate("map");
+        this.props.authenticate(email.value, password.value);
     }
-
-    goToRegister = (event) => {
-        event.preventDefault();
-        this.props.navigate("register");
-    };
 
     render() {
         return (
@@ -34,7 +31,7 @@ export class Login extends Component {
                                 <button className="btn btn--login" type="submit" >Войти</button>
                             </form>
                             <div className="form-text">Новый пользователь?  
-                                <span className="page__subtitle" onClick={this.goToRegister}> Зарегистрируйтесь</span>
+                                <span className="page__subtitle"><Link to="/register"> Зарегистрируйтесь</Link></span>
                             </div>
                         </div>
                     </div>
@@ -45,9 +42,11 @@ export class Login extends Component {
 };
 
 Login.propTypes = {
-    navigate: PropTypes.func,
     isLoggedIn: PropTypes.bool,
     logIn: PropTypes.func
 }
 
-export const LoginWithAuth = withAuth(Login)
+export const LoginWithAuth = connect(
+    null,
+    {authenticate}
+)(Login)

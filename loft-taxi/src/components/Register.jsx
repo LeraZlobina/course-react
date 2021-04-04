@@ -1,19 +1,10 @@
 import React, {Component} from "react";
 import { Input } from "./Input";
 import logo from "../assets/logo.png"
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 
 export class Register extends Component {
-
-    goToMap = (event) => {
-        event.preventDefault();
-        this.props.navigate("map");
-    };
-
-    goToLogin = (event) => {
-        event.preventDefault();
-        this.props.navigate("login");
-    };
 
     render () {
 
@@ -30,10 +21,10 @@ export class Register extends Component {
                                 <Input name="email" type="email" placeholder="Введите email" label="Email" />
                                 <Input name="name" type="text" placeholder="Введите имя" label="Как вас зовут?" />
                                 <Input name="password" type="password" placeholder="Введите пароль" label="Придумайте пароль" />
-                                <button className="btn btn--signup" type="submit" onClick={this.goToMap}>Зарегистрироваться</button>
+                                <button className="btn btn--signup" type="submit"><Link to="/map">Зарегистрироваться</Link></button>
                             </form>
                             <div>Уже зарегистрированы? 
-                                <span className="page__subtitle" onClick={this.goToLogin}> Войти</span>
+                                <span className="page__subtitle"><Link to="/login"> Войти</Link></span>
                             </div>
                         </div>
                     </div>
@@ -43,7 +34,4 @@ export class Register extends Component {
     }
 };
 
-Register.propTypes = {
-    navigate: PropTypes.func
-}
 
