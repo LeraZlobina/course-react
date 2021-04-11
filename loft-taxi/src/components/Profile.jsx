@@ -8,7 +8,7 @@ import { ChipSvg } from "./ChipSvg";
 
 export const Profile = () => {
     return (
-        <>
+        <div className="wrapper">
             <HeaderWithAuth />
             <section className="profile-section">
                 <div className="profile-section__wrapper">
@@ -26,7 +26,7 @@ export const Profile = () => {
                                         <Input name="cardNumber" type="text" placeholder="0000 0000 0000 0000" label="Номер карты" />
                                     </div>
                                     <div className="form__row">
-                                        <InputForProfile name="cardValidityr" type="text" placeholder="00/00" label="MM/YY" />
+                                        <InputForProfile name="cardValidity" type="text" placeholder="00/00" label="MM/YY" />
                                         <InputForProfile name="cvc" type="text" placeholder="000" label="CVC" />
                                     </div>
                                 </form>
@@ -51,7 +51,7 @@ export const Profile = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
         
         
     )

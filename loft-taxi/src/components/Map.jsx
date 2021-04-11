@@ -22,14 +22,13 @@ export class Map extends Component {
     }
 
     render() {
-        return(
-            <>
+        return(             
+            <div className="wrapper">
                 <HeaderWithAuth />
                 <div className="map-wrapper">
                     <div data-testid="map" className="map" ref={this.mapContainer}></div>
                 </div>
-            </>
-            
+            </div>            
         )
     }
 }

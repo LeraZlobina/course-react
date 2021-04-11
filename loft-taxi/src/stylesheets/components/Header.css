@@ -9,6 +9,7 @@
 .menu__list {
     display: flex;
     align-items: center;
+    font-size: 16px;
 }
 
 .menu__item {
@@ -28,7 +29,8 @@
     color: white;
     background: transparent;
     cursor: pointer;
-
+    font-size: 16px;
+    padding: 0;
 }
 
 .menu__btn:focus {
