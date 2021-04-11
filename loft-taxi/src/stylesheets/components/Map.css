@@ -1,0 +1,44 @@
+.map-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mapboxgl-canvas {
+    width: 100% !important; 
+    height: 100% !important;
+}
+
+.mapboxgl-canvas-container {
+    height: 100%;
+}
+
+.mapboxgl-canvas:focus {
+    outline: none;
+}
+
+.mapboxgl-ctrl-bottom-right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.mapboxgl-ctrl-attrib-inner{
+    font-size: 12px;
+}
+
+.mapboxgl-ctrl-attrib-button{
+    display: none;
+}
+    
