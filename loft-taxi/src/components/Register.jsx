@@ -3,23 +3,23 @@ import { Input } from "./Input";
 import logo from "../assets/logo.png";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {authenticate} from "../modules/auth/actions";
+import {registration} from "../modules/register/actions";
 import { Link, Redirect } from "react-router-dom";
 
 
 export class Register extends Component {
 
-    authenticate = (event) => {
+    registration = (event) => {
         event.preventDefault();
-        const { email, password } = event.target;
-        this.props.authenticate(email.value, password.value);
+        const { email, password, name, surname } = event.target;
+        this.props.registration(email.value, password.value, name.value, surname.value);
     }
 
     render () {
 
         return (
             <>
-                {this.props.isLoggedIn ? (<Redirect to="/map" />) :
+                {this.props.isRegisterIn ? (<Redirect to="/map" />) :
                     (
                         <div className="wrapper">
                             <div className="page-wrapper">
@@ -30,7 +30,7 @@ export class Register extends Component {
                                     <div className="page-form__wrapper">
                                         <div className="form-wrapper">
                                             <h1 className="page__title">Регистрация</h1>
-                                            <form className="form" onSubmit={this.authenticate}>
+                                            <form className="form" onSubmit={this.registration}>
                                                 <Input name="email" type="email" placeholder="Введите email" label="Email" />
                                                 <Input name="name" type="text" placeholder="Введите имя" label="Как вас зовут?" />
                                                 <Input name="password" type="password" placeholder="Введите пароль" label="Придумайте пароль" />
@@ -53,10 +53,10 @@ export class Register extends Component {
 };
 
 Register.propTypes = {
-    isLoggedIn: PropTypes.bool,
+    isRegisterIn: PropTypes.bool,
 }
 
-export const RegisterWithAuth = connect(
-    state => ({isLoggedIn: state.auth.isLoggedIn}),
-    {authenticate}
+export const RegisterWithConnect = connect(
+    state => ({isRegisterIn: state.register.isRegisterIn}),
+    {registration}
 )(Register)

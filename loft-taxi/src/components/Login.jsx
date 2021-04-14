@@ -52,7 +52,7 @@ Login.propTypes = {
     isLoggedIn: PropTypes.bool,
 }
 
-export const LoginWithAuth = connect(
+export const LoginWithConnect = connect(
     state => ({isLoggedIn: state.auth.isLoggedIn}),
     {authenticate}
 )(Login)

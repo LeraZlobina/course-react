@@ -10,7 +10,7 @@ export const PrivateRoute = connect ((state) => ({isLoggedIn: state.auth.isLogge
                 isLoggedIn ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to="/login"/>
+                    <Redirect to="/login" />
                 )
             }
         />

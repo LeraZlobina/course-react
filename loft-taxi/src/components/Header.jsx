@@ -34,7 +34,7 @@ export class Header extends Component {
     
 }
 
-export const HeaderWithAuth = connect(
+export const HeaderWithConnect = connect(
     null,
     { logOut }
 )

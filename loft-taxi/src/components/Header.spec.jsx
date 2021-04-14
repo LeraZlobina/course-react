@@ -4,9 +4,9 @@ import { render, fireEvent } from "@testing-library/react";
 import {Router} from "react-router-dom";
 import {createMemoryHistory} from "history";
 
-jest.mock("./Login.jsx", () => ({ LoginWithAuth: () => <div>Login content</div> }));
+jest.mock("./Login.jsx", () => ({ LoginWithConnect: () => <div>Login content</div> }));
 jest.mock("./Map", () => ({ Map: () => <div>Map content</div> }));
-jest.mock("./Profile", () => ({ Profile: () => <div>Profile content</div> }));
+jest.mock("./Profile", () => ({ ProfileWithConnect: () => <div>Profile content</div> }));
 
 
 describe("Header", () => {

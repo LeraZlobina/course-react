@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import mapboxgl from "mapbox-gl";
-import {HeaderWithAuth} from "./Header"
+import {HeaderWithConnect} from "./Header"
 
 export class Map extends Component {
     map = null;
@@ -24,7 +24,7 @@ export class Map extends Component {
     render() {
         return(             
             <div className="wrapper">
-                <HeaderWithAuth />
+                <HeaderWithConnect />
                 <div className="map-wrapper">
                     <div data-testid="map" className="map" ref={this.mapContainer}></div>
                 </div>

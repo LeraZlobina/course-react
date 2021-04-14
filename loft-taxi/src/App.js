@@ -1,8 +1,8 @@
 import React from "react";
-import {LoginWithAuth} from "./components/Login";
-import {RegisterWithAuth} from "./components/Register";
+import {LoginWithConnect} from "./components/Login";
+import {RegisterWithConnect} from "./components/Register";
 import {Map}  from "./components/Map";
-import {Profile} from "./components/Profile";
+import {ProfileWithConnect} from "./components/Profile";
 import "./stylesheets/main.css";
 import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute.jsx";
@@ -13,9 +13,9 @@ export default () => {
     
     <Switch>
       <PrivateRoute path="/map" component={Map} />
-      <PrivateRoute path="/profile" component={Profile} />
-      <Route path="/login" component={LoginWithAuth} />
-      <Route path="/register" component={RegisterWithAuth} />
+      <PrivateRoute path="/profile" component={ProfileWithConnect} />
+      <Route path="/login" component={LoginWithConnect} />
+      <Route path="/register" component={RegisterWithConnect} />
     </Switch>
       
     
