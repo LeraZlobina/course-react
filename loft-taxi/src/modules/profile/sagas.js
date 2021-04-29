@@ -3,8 +3,8 @@ import { serverProfileSubmit } from "../../api";
 import {CARD_DETAILS, profileSubmit} from "./actions"
 
 export function* cardDetailsSaga(action) {
-    const {cardNumber, expiryDate, cardName, cvc} = action.payload;
-    const success = yield call(serverProfileSubmit, cardNumber, expiryDate, cardName, cvc);
+    const {cardNumber, expiryDate, cardName, cvc, token} = action.payload;
+    const success = yield call(serverProfileSubmit, cardNumber, expiryDate, cardName, cvc, token);
     if(success) {
         yield put(profileSubmit())
     }

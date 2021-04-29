@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding: 3px 23px;
     align-items: center;
+    z-index: 100;
 }
 
 .menu__list {
