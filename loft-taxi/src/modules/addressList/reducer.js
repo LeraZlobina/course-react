@@ -1,4 +1,4 @@
-import {GET_ADDRESSES} from "./actions";
+import { GET_ADDRESSES } from "./actions";
 
 const initialState = {
     addresses: []
@@ -6,12 +6,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case GET_ADDRESSES: 
+        case GET_ADDRESSES:
             return {
-                ...state, 
-                addresses: action.payload 
+                ...state,
+                addresses: action.payload
             }
-        default: 
+        default:
             return state
     }
 }
+
+export const adressesSelector = (store) => store.adressList.adresses;
