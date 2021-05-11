@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect} from "react";
 import {connect} from "react-redux";
 import { Button, makeStyles, FormControl, InputLabel} from "@material-ui/core/";
 import { getAddresses } from "../modules/addressList/actions";
@@ -30,7 +30,72 @@ const useFormStyles = makeStyles(() => ({
     }
 }));
 
-export class OrderForm extends Component {
+
+
+export const OrderForm = (props) => {
+    const classes = useFormStyles();
+
+    useEffect(
+        ()=>{ 
+            props.getAddresses();
+            props.getCoordinates();
+        }, []
+    );
+
+    const [route, setRoute] = React.useState({from: "", to: ""});
+
+    const onChange = (event) => {
+        let input = event.target
+        setRoute({...route, [input.name]: input.value});
+    };
+
+    const onClick = () => {
+        getCoordinates(route);
+    };
+
+    return(
+        <>
+            <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="from">Откуда</InputLabel>
+                <MapSelect 
+                    addressKey="from"
+                    otherAddress={route.to}
+                    onChange={onChange}
+                    route={route}
+                    values={props.addresses}
+                >
+                </MapSelect>
+            </FormControl>
+            <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="to">Куда</InputLabel>
+                <MapSelect 
+                    addressKey="to"
+                    otherAddress={route.from}
+                    onChange={onChange}
+                    route={route}
+                    values={props.addresses}
+                >
+                </MapSelect>
+            </FormControl>
+            <Tariff />
+            <Button 
+                className={classes.button}
+                onClick={onClick}
+            >
+                Заказать
+            </Button>
+        </>
+    )
+}
+
+export const OrderFormWithConnect = connect(
+    state => ({addresses: state.addressList.addresses}),
+    {getCoordinates, getAddresses}
+)(OrderForm)
+
+
+
+/*export class OrderForm extends Component {
     componentDidMount(){
         const {getAddresses} = this.props;
         getAddresses();
@@ -45,7 +110,7 @@ export class OrderForm extends Component {
     }
 }
 
-export const OrderFormWrapper = props => {
+export const OrderFormWrapper = (props) => {
     const classes = useFormStyles();
 
     const [route, setRoute] = React.useState({from: "", to: ""});
@@ -106,5 +171,5 @@ const ButtonWrapper = ({onClick}) => {
 
 export const OrderFormWithConnect = connect(
     state => ({addresses: state.addressList.addresses}),
-    {getAddresses, getCoordinates}
-)(OrderFormWrapper)
+    {getCoordinates}
+)(OrderFormWrapper)*/

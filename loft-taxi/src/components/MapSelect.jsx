@@ -1,7 +1,9 @@
 import React from "react";
 import {Select, MenuItem} from "@material-ui/core/";
 
-export const MapSelect = ({otherAddress, values, addressKey, route, onChange}) => {
+export const MapSelect = (props) => {
+    const {otherAddress, values, addressKey, route, onChange} = props;
+    
     const availableAddresses = values
         .filter(item => item !== otherAddress)
         .map(addressItem => (

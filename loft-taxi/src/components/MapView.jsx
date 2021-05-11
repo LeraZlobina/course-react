@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { HeaderWithConnect } from "./Header";
-import { OrderForm } from "./MapOrderForm";
+import { OrderFormWithConnect } from "./MapOrderForm";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { resetCoordinates } from "../modules/route/actions";
-
 
 export class MapView extends Component {
     
@@ -47,7 +46,7 @@ export class MapView extends Component {
             <div className="wrapper">
                 <HeaderWithConnect />
                 <div className="map__message">
-                    <OrderForm/>
+                    <OrderFormWithConnect/>
                 </div>
             </div>
         )

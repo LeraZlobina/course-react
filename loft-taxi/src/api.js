@@ -30,10 +30,18 @@ export const serverProfileSubmit = (form) => {
   ).then(res => res.json()).then(data => data.success);
 }
 
+/*export const serverGetAddresses = async () => {
+  const response = await fetch(
+    `https://loft-taxi.glitch.me/addressList`
+  );
+  const data = await response.json();
+  return data.addresses;
+}*/
+
 export const serverGetAddresses = () => {
   return fetch(
     `https://loft-taxi.glitch.me/addressList`
-  ).then(res => res.json()).then(data => data.addresses);
+  ).then(res => res.json());
 }
 
 export const serverGetRoute = (address1, address2) => {
