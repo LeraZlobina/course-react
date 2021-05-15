@@ -1,7 +1,7 @@
 import React from "react";
 import {LoginWithConnect} from "./components/Login";
 import {RegisterWithConnect} from "./components/Register";
-import {MapWithConnect}  from "./components/Map";
+import MapWithConnect  from "./components/Map";
 import {ProfileWithConnect} from "./components/Profile";
 import "./stylesheets/main.css";
 import { Switch, Route, Redirect } from "react-router-dom";

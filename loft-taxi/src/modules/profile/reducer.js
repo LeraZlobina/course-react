@@ -14,3 +14,5 @@ export default (state = initialState, action) => {
         
     }
 }
+
+export const isSubmittedSelector = (store) => store.profile.isSubmitted;
