@@ -1,4 +1,4 @@
-import {GET_COORDINATES, RESET_COORDINATES} from "./actions";
+import {UPDATE_COORDINATES, RESET_COORDINATES} from "./actions";
 
 const initialState = {
     coordinates: []
@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case GET_COORDINATES: 
+        case UPDATE_COORDINATES: 
             return {
                 ...state,
                 coordinates: action.payload

@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Button, makeStyles, FormControl, InputLabel } from "@material-ui/core/";
-import { adressesSelector } from '../modules/addressList/reducer';
+import { addressesSelector } from '../modules/addressList/reducer';
 import { getCoordinates } from "../modules/route/actions";
 import { Tariff } from "./Tariff";
 import { MapSelect } from "./MapSelect";
@@ -30,18 +30,16 @@ const useFormStyles = makeStyles(() => ({
   }
 }));
 
-
-
 export const OrderFormWithConnect = (props) => {
   const classes = useFormStyles();
   
-  const adresses = useSelector(adressesSelector);
+  const addresses = useSelector(addressesSelector);
   const dispatch = useDispatch();
 
-  const [route, setRoute] = React.useState({ from: "", to: "" });
+  const [route, setRoute] = useState({ address1: "", address2: "" });
 
   const onChange = (event) => {
-    let input = event.target
+    let input = event.target;
     setRoute({ ...route, [input.name]: input.value });
   };
 
@@ -54,22 +52,22 @@ export const OrderFormWithConnect = (props) => {
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="from">Откуда</InputLabel>
         <MapSelect
-          addressKey="from"
-          otherAddress={route.to}
+          addressKey="address1"
+          otherAddress={route.address2}
           onChange={onChange}
           route={route}
-          values={props.addresses}
+          values={addresses}
         >
         </MapSelect>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="to">Куда</InputLabel>
         <MapSelect
-          addressKey="to"
-          otherAddress={route.from}
+          addressKey="address2"
+          otherAddress={route.address1}
           onChange={onChange}
           route={route}
-          values={props.addresses}
+          values={addresses}
         >
         </MapSelect>
       </FormControl>

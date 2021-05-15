@@ -1,4 +1,4 @@
-import { GET_ADDRESSES } from "./actions";
+import { UPDATE_ADDRESSES } from "./actions";
 
 const initialState = {
     addresses: []
@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case GET_ADDRESSES:
+        case UPDATE_ADDRESSES:
             return {
                 ...state,
                 addresses: action.payload
@@ -16,4 +16,4 @@ export default (state = initialState, action) => {
     }
 }
 
-export const adressesSelector = (store) => store.adressList.adresses;
+export const addressesSelector = (store) => store.addressList.addresses;

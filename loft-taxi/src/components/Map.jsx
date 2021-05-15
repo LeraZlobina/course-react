@@ -14,7 +14,6 @@ const MapWithConnect = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCoordinates());
         dispatch(getAddresses());
     }, []);
 
@@ -29,10 +28,6 @@ const MapWithConnect = () => {
         });
 
         setMap(newMap);
-
-        return () => {
-            map.remove();
-        }
     }, []);
 
 
