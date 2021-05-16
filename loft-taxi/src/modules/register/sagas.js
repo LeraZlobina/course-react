@@ -5,6 +5,7 @@ import {REGISTRATION, registerIn} from "./actions"
 export function* registrationSaga(action) {
     const {email, password, name, surname} = action.payload;
     const success = yield call(serverRegisterIn, email, password, name, surname);
+    console.log(success)
     if(success) {
         yield put(registerIn())
     }

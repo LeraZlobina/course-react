@@ -30,7 +30,7 @@ const useFormStyles = makeStyles(() => ({
   }
 }));
 
-export const OrderFormWithConnect = (props) => {
+export const OrderForm = (props) => {
   const classes = useFormStyles();
   
   const addresses = useSelector(addressesSelector);
