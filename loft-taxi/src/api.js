@@ -1,8 +1,16 @@
-/*export const serverLogIn = async (email, password) => {
+export const serverLogIn = async (email, password) => {
   return fetch(
-    `https://loft-taxi.glitch.me/auth?username=${email}&password=${password}`
-  ).then(res => res.json()).then(data => data.success);
-};*/
+
+    `https://loft-taxi.glitch.me/auth`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password })
+    }
+  ).then(res => res.json());
+};
+
 
 const options = (body) => ({
   method: 'POST',
@@ -12,33 +20,14 @@ const options = (body) => ({
   body
 });
 
-/*export const serverLogIn = (body) => {
-  return fetch(
-    `https://loft-taxi.glitch.me/auth`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify(body)
-    }
-  ).then(res => res.json());
-};*/
-
-export const serverLogIn = (email, password) => {
-  const body = JSON.stringify({email, password});
-  return fetch(
-    `https://loft-taxi.glitch.me/auth`,
-    options(body)
-  ).then(res => res.json()).then(data => data.success);
-};
 
 export const serverRegisterIn = (email, password, name, surname) => {
   const body = JSON.stringify({email, password, name, surname});
+
   return fetch(
     `https://loft-taxi.glitch.me/register`,
     options(body)
-  ).then(res => res.json()).then(data => data.success);
+  ).then(res => res.json());
 }
 
 export const serverProfileSubmit = (form) => {

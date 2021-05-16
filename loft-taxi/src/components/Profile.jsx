@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "./Input";
-import {HeaderWithConnect} from "./Header"
+import Header from "./Header"
 import { InputForProfile } from "./InputForProfile";
 import { LogoSvg } from "./LogoSvg";
 import { ChipSvg } from "./ChipSvg";
@@ -220,7 +220,7 @@ export default Profile
             <>
                 {this.props.isSubmitted ?(
                     <div className="wrapper">
-                        <HeaderWithConnect />
+                        <Header />
                         <section className="profile-section">
                             <div className="profile-section__wrapper">
                                 <div className="profile-wrapper"></div>
@@ -236,7 +236,7 @@ export default Profile
                     </div>
                     ) : (
                         <div className="wrapper">
-                            <HeaderWithConnect />
+                            <Header />
                             <section className="profile-section">
                                 <div className="profile-section__wrapper">
                                     <div className="profile-wrapper"></div>

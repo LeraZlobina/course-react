@@ -1,6 +1,8 @@
+
 import React, { useEffect } from "react";
-import { HeaderWithConnect } from "./Header";
+import Header from "./Header";
 import { OrderForm } from "./MapOrderForm";
+
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCoordinates } from "../modules/route/actions";
@@ -32,7 +34,7 @@ const MapView = ({ map }) => {
   if (!isSubmitted) {
     return (
       <div className="wrapper">
-        <HeaderWithConnect />
+        <Header />
         <div className="map__message">
           <h1 className="map__message-title">Введите данные карты</h1>
           <p className="map__message-subtitle">Чтобы заказать такси, заполните платежные данные в профиле</p>
@@ -46,7 +48,7 @@ const MapView = ({ map }) => {
   if (coordinates.length) {
     return (
       <div className="wrapper">
-        <HeaderWithConnect />
+        <Header />
         <div className="map__message">
           <h1 className="map__message-title">Заказ размещен</h1>
           <p className="map__message-subtitle"> Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.</p>
@@ -59,7 +61,7 @@ const MapView = ({ map }) => {
   }
   return (
     <div className="wrapper">
-      <HeaderWithConnect />
+      <Header />
       <div className="map__message">
         <OrderForm />
       </div>

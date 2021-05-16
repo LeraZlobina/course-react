@@ -1,41 +1,37 @@
 import React, { Component } from "react";
 import logo from "../assets/logo-header.png";
-import {connect} from "react-redux"
-import { logOut } from "../modules/auth/actions";
-import { Link } from "react-router-dom";
-    
+import { connect, useDispatch } from "react-redux"
+import { logOut, UNAUTHENTICATE } from "../modules/auth/actions";
+import { Link, useHistory } from "react-router-dom";
 
+const Header = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-export class Header extends Component {
+  const unauthenticate = (event) => {
+    event.preventDefault();
+    dispatch({ type: UNAUTHENTICATE });
+    queueMicrotask(() => history.push('/login'));
+  }
 
-    unauthenticate = (event) => {
-        event.preventDefault();
-        this.props.logOut();
-    }
+  return (
+    <header className="header">
+      <div className="header__column">
+        <img src={logo} className="menu__logo" alt="logo" />
+      </div>
+      <div className="header__column">
+        <nav className="menu">
+          <ul className="menu__list">
+            <li className="menu__item menu__item--active menu__btn"><Link to="/map">Карта</Link></li>
+            <li className="menu__item menu__btn" ><Link to="/profile">Профиль</Link></li>
+            <li className="menu__item "><button className="menu__btn" onClick={unauthenticate}>Выйти</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  )
 
-    render() {
-        return (
-            <header className="header">
-                <div className="header__column">
-                    <img src={ logo } className="menu__logo" alt="logo"/>
-                </div>
-                <div className="header__column">
-                    <nav className="menu">
-                        <ul className="menu__list">
-                            <li className="menu__item menu__item--active menu__btn"><Link to="/map">Карта</Link></li>
-                            <li className="menu__item menu__btn" ><Link to="/profile">Профиль</Link></li>
-                            <li className="menu__item "><button className="menu__btn" onClick={this.unauthenticate}>Выйти</button></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-        )
-    }
-    
 }
 
-export const HeaderWithConnect = connect(
-    null,
-    { logOut }
-)
-(Header)
+export default Header;
+
