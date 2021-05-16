@@ -1,3 +1,4 @@
+
 import React, { Component, useCallback, useState } from "react";
 import { Input } from "./Input";
 import logo from "../assets/logo.png";
@@ -68,3 +69,4 @@ export const RegisterWithConnect = connect(
   state => ({ isRegisterIn: state.register.isRegisterIn }),
   { registration }
 )(Register)
+

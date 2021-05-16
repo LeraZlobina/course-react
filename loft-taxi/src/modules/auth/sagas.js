@@ -1,5 +1,6 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { serverLogIn } from "../../api";
+
 import { UNAUTHENTICATE, AUTHENTICATE, logIn, logOut } from "./actions"
 
 export function* authenticateSaga(action) {

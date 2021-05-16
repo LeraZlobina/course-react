@@ -1,5 +1,6 @@
 export const serverLogIn = async (email, password) => {
   return fetch(
+
     `https://loft-taxi.glitch.me/auth`, {
       method: 'POST',
       headers: {
@@ -10,6 +11,7 @@ export const serverLogIn = async (email, password) => {
   ).then(res => res.json());
 };
 
+
 const options = (body) => ({
   method: 'POST',
   headers: {
@@ -18,9 +20,10 @@ const options = (body) => ({
   body
 });
 
-export const serverRegisterIn = (form) => {
-  const { email, password, name, surname } = form;
-  const body = JSON.stringify({ email, password, name, surname });
+
+export const serverRegisterIn = (email, password, name, surname) => {
+  const body = JSON.stringify({email, password, name, surname});
+
   return fetch(
     `https://loft-taxi.glitch.me/register`,
     options(body)

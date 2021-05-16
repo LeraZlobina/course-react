@@ -7,7 +7,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { getCoordinates } from "../modules/route/actions";
 import { coordinatesSelector } from "../modules/route/reducer";
 
-const MapWithConnect = () => {
+const Map = () => {
     const [map, setMap] = useState(null);
     const mapContainer = useRef(null);
 
@@ -28,18 +28,19 @@ const MapWithConnect = () => {
         });
 
         setMap(newMap);
+
+        return () => {
+            newMap.remove();
+        }
     }, []);
 
 
     return (
-        <>
-            <MapContainer ref={mapContainer}>
-                <MapView
-                    map={map}
-                />
-            </MapContainer>
-        </>
+    
+        <MapContainer ref={mapContainer}>
+            <MapView map={map} />
+        </MapContainer>
     )
 };
 
-export default MapWithConnect;
+export default Map;

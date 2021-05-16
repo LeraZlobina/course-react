@@ -1,30 +1,35 @@
-import React, { Component, useEffect } from "react";
+
+import React, { useEffect } from "react";
 import Header from "./Header";
-import { OrderFormWithConnect } from "./MapOrderForm";
+import { OrderForm } from "./MapOrderForm";
+
 import { Link } from "react-router-dom";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetCoordinates } from "../modules/route/actions";
 import { coordinatesSelector } from "../modules/route/reducer";
 import { isSubmittedSelector } from "../modules/profile/reducer";
 import { drawRoute } from "./MapDrawRoute";
 
-
 const MapView = ({ map }) => {
-  const isSubmitted = useSelector(isSubmittedSelector);
-  const coordinates = useSelector(coordinatesSelector);
 
-  const dispatch = useDispatch();
+    const isSubmitted = useSelector(isSubmittedSelector);
+    const coordinates = useSelector(coordinatesSelector);
 
-  const reset = (event) => {
-    event.preventDefault();
-    dispatch(resetCoordinates());
-  }
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (map && coordinates.length) {
-        drawRoute(map, coordinates);
+    const reset = (event) => {
+        event.preventDefault();
+        dispatch(resetCoordinates());
+        map.removeLayer("route");
     }
-}, [coordinates]);
+
+    useEffect(() => {
+        if (map && map.isStyleLoaded() && coordinates.length) {
+            drawRoute(map, coordinates);
+        }
+    }, [coordinates]);
+
+    
 
   if (!isSubmitted) {
     return (
@@ -48,7 +53,7 @@ const MapView = ({ map }) => {
           <h1 className="map__message-title">Заказ размещен</h1>
           <p className="map__message-subtitle"> Ваше такси уже едет к вам. Прибудет приблизительно через 10 минут.</p>
           <div className="profile__button">
-            <button className="btn btn--profile">Сделать новый заказ</button>
+            <button onClick={reset} className="btn btn--profile">Сделать новый заказ</button>
           </div>
         </div>
       </div>
@@ -58,7 +63,7 @@ const MapView = ({ map }) => {
     <div className="wrapper">
       <Header />
       <div className="map__message">
-        <OrderFormWithConnect />
+        <OrderForm />
       </div>
     </div>
   )

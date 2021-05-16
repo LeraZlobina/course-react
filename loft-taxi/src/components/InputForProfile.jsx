@@ -7,7 +7,7 @@ export const InputForProfile = ({name, type, label, placeholder, change}) => {
     return (
         <div data-testid="inputForProfile" className="input-wrapper input-wrapper--profile">
             <label className="label" htmlFor={name}>{label}</label>
-            <input className="input" id={name} type={type} placeholder={placeholder} onChange={change} />
+            <input className="input" id={name} type={type} placeholder={placeholder} onChange={change} required/>
         </div>  
     );
 };

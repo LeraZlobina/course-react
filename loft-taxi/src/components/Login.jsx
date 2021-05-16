@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import { Input } from "./Input";
 import logo from "../assets/logo.png";
 import PropTypes from "prop-types";
+
 import { connect } from "react-redux";
 import { authenticate } from "../modules/auth/actions";
+
 import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { isLoggedInSelector } from "../modules/auth/reducer";
+
 
 export class Login extends Component {
+
 
   authenticate = (event) => {
     event.preventDefault();
@@ -53,6 +59,8 @@ Login.propTypes = {
 }
 
 export const LoginWithConnect = connect(
+
   state => ({ isLoggedIn: state.auth.isLoggedIn }),
   { authenticate }
 )(Login)
+

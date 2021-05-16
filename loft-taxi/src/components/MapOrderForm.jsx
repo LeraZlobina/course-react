@@ -30,7 +30,7 @@ const useFormStyles = makeStyles(() => ({
   }
 }));
 
-export const OrderFormWithConnect = (props) => {
+export const OrderForm = (props) => {
   const classes = useFormStyles();
   
   const addresses = useSelector(addressesSelector);
@@ -82,81 +82,3 @@ export const OrderFormWithConnect = (props) => {
   )
 }
 
-/*export class OrderForm extends Component {
-    componentDidMount(){
-        const {getAddresses} = this.props;
-        getAddresses();
-        const {getCoordinates} = this.props;
-        getCoordinates();
-    };
-
-    render(){
-        return(
-            <OrderFormWithConnect />
-        )
-    }
-}
-
-export const OrderFormWrapper = (props) => {
-    const classes = useFormStyles();
-
-    const [route, setRoute] = React.useState({from: "", to: ""});
-
-    const onChange = (event) => {
-        let input = event.target
-        setRoute({...route, [input.name]: input.value});
-    };
-
-    const onClick = () => {
-        getCoordinates(route);
-    };
-
-    return(
-        <>
-            <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="from">Откуда</InputLabel>
-                <MapSelect
-                    addressKey="from"
-                    otherAddress={route.to}
-                    onChange={onChange}
-                    route={route}
-                    values={props.addresses}
-                >
-                </MapSelect>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="to">Куда</InputLabel>
-                <MapSelect
-                    addressKey="to"
-                    otherAddress={route.from}
-                    onChange={onChange}
-                    route={route}
-                    values={props.addresses}
-                >
-                </MapSelect>
-            </FormControl>
-            <Tariff />
-            <ButtonWrapper
-                onClick={onClick}
-            />
-        </>
-    )
-}
-
-const ButtonWrapper = ({onClick}) => {
-    const classes = useFormStyles();
-
-    return(
-        <Button
-            className={classes.button}
-            onClick={onClick}
-        >
-            Заказать
-        </Button>
-    )
-}
-
-export const OrderFormWithConnect = connect(
-    state => ({addresses: state.addressList.addresses}),
-    {getCoordinates}
-)(OrderFormWrapper)*/
