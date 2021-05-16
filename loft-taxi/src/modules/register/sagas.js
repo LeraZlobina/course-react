@@ -1,12 +1,13 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { serverRegisterIn } from "../../api";
+import { logIn } from "../auth/actions";
 import {REGISTRATION, registerIn} from "./actions"
 
 export function* registrationSaga(action) {
-    const {email, password, name, surname} = action.payload;
-    const success = yield call(serverRegisterIn, email, password, name, surname);
+    const { success, token } = yield call(serverRegisterIn, action.payload);
     if(success) {
-        yield put(registerIn())
+        localStorage.setItem('token', token);
+        yield put(logIn(token));
     }
 }
 export function* registerSaga() {

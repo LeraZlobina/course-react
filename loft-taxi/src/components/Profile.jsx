@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input } from "./Input";
-import {HeaderWithConnect} from "./Header"
+import Header from "./Header"
 import { InputForProfile } from "./InputForProfile";
 import { LogoSvg } from "./LogoSvg";
 import { ChipSvg } from "./ChipSvg";
@@ -64,7 +64,7 @@ export class Profile extends Component {
             <>
                 {this.props.isSubmitted ?(
                     <div className="wrapper">
-                        <HeaderWithConnect />
+                        <Header />
                         <section className="profile-section">
                             <div className="profile-section__wrapper">
                                 <div className="profile-wrapper"></div>
@@ -80,7 +80,7 @@ export class Profile extends Component {
                     </div>
                     ) : (
                         <div className="wrapper">
-                            <HeaderWithConnect />
+                            <Header />
                             <section className="profile-section">
                                 <div className="profile-section__wrapper">
                                     <div className="profile-wrapper"></div>

@@ -7,7 +7,10 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_IN: 
-            return {isRegisterIn: true}
+            return {
+                ...state,
+                isRegisterIn: true
+            }
         
         default: 
             return state

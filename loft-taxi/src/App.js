@@ -10,7 +10,6 @@ import { PrivateRoute } from "./PrivateRoute.jsx";
 export default () => {
 
   return (
-    
     <Switch>
       <PrivateRoute path="/map" component={MapWithConnect} />
       <PrivateRoute path="/profile" component={ProfileWithConnect} />
@@ -18,8 +17,6 @@ export default () => {
       <Route path="/register" component={RegisterWithConnect} />
       <Redirect to="/login" />
     </Switch>
-      
-    
   )
 }
 
