@@ -1,0 +1,94 @@
+.page-wrapper{
+    flex: 1;
+    display: flex;
+}
+
+.page-wrapper__left {
+    flex: 1;
+    display: flex;
+    background: #1C1A19;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 192px;
+    height: 228px;
+}
+
+.page-wrapper__right {
+    flex: 3;
+    background: url(../../assets/map.png) center center no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-form__wrapper {
+    padding: 55px 0;
+    background: white;
+    border-radius: 20px;
+    width: 520px;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 86px;
+}
+
+.page__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 57px;
+}
+
+.form {
+    margin-bottom: 24px;
+}
+
+.btn {
+    border: none;
+    font-size: 25px;
+    border-radius: 70px;
+    background-color: #fdbf5a;
+    cursor: pointer;
+    
+}
+
+.btn--login {
+    padding: 16px 141px;
+}
+
+.btn--signup {
+    padding: 16px 60px;
+    width: 100%;
+}
+
+.btn--profile {
+    padding: 12px 125px;
+    font-size: 21px;
+
+}
+
+.btn:hover {
+    background-color: #ffa842;
+    transition: background-color 0.2s;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.page__subtitle {
+    color: #fdbf5a;
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.form-text {
+    display: flex;
+}

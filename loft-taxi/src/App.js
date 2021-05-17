@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { LoginWithConnect } from './components/Login';
+import { RegisterWithConnect } from './components/Register';
+import Map from './components/Map';
+import Profile from './components/Profile';
+import './stylesheets/main.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { PrivateRoute } from './PrivateRoute.jsx';
+import { useDispatch } from 'react-redux';
+import { loadAuth } from './modules/auth/actions';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadAuth());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <PrivateRoute path="/map" component={Map} />
+      <PrivateRoute path="/profile" component={Profile} />
+      <Route path="/login" component={LoginWithConnect} />
+      <Route path="/register" component={RegisterWithConnect} />
+      <Redirect to="/login" />
+    </Switch>
   );
-}
+};
 
 export default App;
