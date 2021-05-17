@@ -1,8 +1,6 @@
-
-import React, { Component, useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Input } from "./Input";
 import logo from "../assets/logo.png";
-import PropTypes from "prop-types";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { registration } from "../modules/register/actions";
 import { Link, Redirect, useHistory } from "react-router-dom";
